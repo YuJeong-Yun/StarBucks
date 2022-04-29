@@ -52,3 +52,31 @@ fadeEls.forEach(function(fadeEl, index) {
     opacity: 1
   });
 });
+
+
+/////////////////////////슬라이드 효과-swiper 라이브러리///////////////////
+// 공지사항
+new Swiper('.notice-line .swiper', {
+  direction: 'vertical',
+  autoplay: true,   // 자동재생 여부
+  loop: true  // 반복재생 여부(마지막 슬라이드 후 기능 멈춤 여부)
+});
+// 슬라이드 배너
+new Swiper('.promotion .swiper', {
+  // direction: 'horizontal';  기본값이므로 생략 가능
+  slidesPerView: 3, // 한번에 보여줄 슬라이드 개수
+  spaceBetween: 10, // 슬라이드 사이 여백
+  centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+  loop: true,
+  autoplay: {
+    delay: 5000
+  },
+  pagination: {
+    el: '.promotion .swiper-pagination', // 페이지 번호 요소 선택자
+    clickable: true // 사용자의 페이지 번호 요소 제어 가능 여부
+  },
+  navigation: {
+    prevEl: '.promotion .swiper-button-disabled.prev',
+    nextEl: '.promotion .swiper-button-disabled.next'
+  }
+});
