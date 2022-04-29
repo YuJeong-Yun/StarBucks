@@ -1,3 +1,4 @@
+/////////////////////돋보기 아이콘//////////////////////
 const searchEl = document.querySelector('.search');
 const searchInputEl = searchEl.querySelector('input');
 
@@ -17,6 +18,7 @@ searchInputEl.addEventListener('blur', function() {
 });
 
 
+//////////////////////배지 효과///////////////////////////
 const badgeEl = document.querySelector('header .badges');
 
 // 스크롤 할 때마다 함수가 실행되므로, 함수가 한번에 수십번 실행되어 프로그램에 부하가 걸릴 수 있음
@@ -40,3 +42,13 @@ window.addEventListener('scroll', _.throttle(function() {
   }
 }, 300));
 // _.throttle(함수, 시간)
+
+
+///////////////////////비주얼 페이드인 효과////////////////////
+const fadeEls = document.querySelectorAll('.visual .fade-in');
+fadeEls.forEach(function(fadeEl, index) {
+  gsap.to(fadeEl, 1, {
+    delay: (index+1)* .7,  // 첫번째 요소는 0.7, 두번째 요소는 1.4 .. 뒤에 동작
+    opacity: 1
+  });
+});
