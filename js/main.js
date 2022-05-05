@@ -80,6 +80,17 @@ new Swiper('.promotion .swiper', {
     nextEl: '.promotion .swiper-button-disabled.next'
   }
 });
+// 푸터 로고 슬라이드
+new Swiper('.awards .swiper', {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: '.awards .swiper-prev',
+    nextEl: '.awards .swiper-next'
+  }
+});
 
 
 //////////////////////////프로모션 토글/////////////////////////////////
@@ -139,3 +150,10 @@ spyEls.forEach(function(spyEl) {
     .setClassToggle(spyEl, 'show')
     .addTo(new ScrollMagic.Controller());
 });
+
+
+
+
+////////////////////////////Footer에 년도 계산//////////////////////////
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
