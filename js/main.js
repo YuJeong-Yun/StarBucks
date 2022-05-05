@@ -18,8 +18,10 @@ searchInputEl.addEventListener('blur', function () {
 });
 
 
+
 //////////////////////배지 효과///////////////////////////
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 // 스크롤 할 때마다 함수가 실행되므로, 함수가 한번에 수십번 실행되어 프로그램에 부하가 걸릴 수 있음
 // throttle을 이용해 0.3초 단위로 부하를 줘서 함수가 한번에 많이 실행되는 걸 방지함
@@ -33,15 +35,30 @@ window.addEventListener('scroll', _.throttle(function () {
       opacity: 0,
       display: 'none'
     });
+    // 버튼 보이기
+    gsap.to(toTopEl,.2, {
+      x: 0
+    });
   } else {
     // 배지 보이기
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
     });
-  }
+    // 버튼 숨기기
+    gsap.to(toTopEl,.2, {
+      x: 100
+    });
+  } 
 }, 300));
 // _.throttle(함수, 시간)
+
+toTopEl.addEventListener('click', function(){
+  gsap.to(window, .7, {
+    scrollTo: 0 // ScrollPlugin 라이브러리 연결해야 사용가능 - 화면의 위치를 0으로 옮김
+  })
+});
+
 
 
 ///////////////////////비주얼 페이드인 효과////////////////////
@@ -52,6 +69,7 @@ fadeEls.forEach(function (fadeEl, index) {
     opacity: 1
   });
 });
+
 
 
 /////////////////////////슬라이드 효과-swiper 라이브러리///////////////////
@@ -93,6 +111,7 @@ new Swiper('.awards .swiper', {
 });
 
 
+
 //////////////////////////프로모션 토글/////////////////////////////////
 const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
@@ -109,6 +128,7 @@ promotionToggleBtn.addEventListener('click', function () {
   //   promotionEl.classList.remove('hide');
   // }
 });
+
 
 
 
